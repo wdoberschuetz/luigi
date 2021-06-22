@@ -66,6 +66,12 @@ export class linkManager extends LuigiClientBase {
 
     this.options.preserveView = preserveView;
     const relativePath = path[0] !== '/'; //just a comment to check out the committing
+
+    if(!relativePath){
+      console.warn('Absolute path navigation prevented.')
+      return;
+    }
+
     const hasIntent = path.toLowerCase().includes('?intent=');
     const navigationOpenMsg = {
       msg: 'luigi.navigation.open',
